@@ -1,0 +1,25 @@
+/* TODO 1: Todos os parágrafos em vermelho */
+p {
+    color: red;
+  }
+  
+  /* TODO 2: Elementos com classe "note" com fonte maior */
+  .note {
+    font-size: 20px;
+  }
+  
+  /* TODO 3: Elemento com id "id-selector-demo" em verde */
+  #id-selector-demo {
+    color: green;
+  }
+  
+  /* TODO 4: Elementos li com value="4" em azul */
+  li[value="4"] {
+    color: blue;
+  }
+  
+  /* TODO 5: Todos os elementos centralizados */
+  * {
+    text-align: center;
+  }
+  
