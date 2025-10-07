@@ -1,0 +1,39 @@
+/* Define o tamanho das imagens */
+img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Torna os títulos de cores com peso normal */
+  h2 {
+    font-weight: normal;
+  }
+  
+  /* Define a cor de cada título de acordo com a cor em espanhol */
+  #red {
+    color: red;
+  }
+  
+  #blue {
+    color: blue;
+  }
+  
+  #orange {
+    color: orange;
+  }
+  
+  #green {
+    color: green;
+  }
+  
+  #yellow {
+    color: yellow;
+  }
+  
+  /* Centraliza o texto e dá espaçamento visual (opcional, mas melhora o layout) */
+  body {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+  }
+  
