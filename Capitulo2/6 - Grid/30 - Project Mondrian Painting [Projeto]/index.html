@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /*
+      Cores:
+      Branco: #F0F1EC
+      Vermelho: #E72F24
+      Preto (linhas): #000
+      Azul: #004592
+      Amarelo: #F9D01E
+    */
+
+    body {
+      background-color: antiquewhite;
+    }
+
+    .quadro {
+      display: grid;
+      grid-template-columns: 320px 198px 153px 50px;
+      grid-template-rows: 414px 130px 155px 20px;
+      width: 748px;
+      height: 748px;
+      gap: 9px;
+      background-color: black;
+    }
+
+    #vermelho{
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .vermelho{
+        background-color: #E72F24;
+    }
+
+    .branco{
+        background-color: #F0F1EC;
+    }
+
+     #branco1{
+        grid-column-start: 2;
+        grid-column-end: 5;
+     }
+
+     #branco2{
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 1;
+     }
+
+     #branco3{
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 4;
+     }
+
+     #branco4{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 4;
+        grid-row-end: 4;
+     }
+
+     #branco5{
+        grid-column-start: 4;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 5;
+     }
+
+     #azul{
+        grid-column-start: 4;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        margin-bottom: 10px;
+     }
+
+     .azul{
+        background-color: #004592;
+     }
+
+     #amarelo{
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 4;
+     }
+
+     .amarelo{
+        background-color: #F9D01E;
+     }
+
+     #preto{
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 4;
+     }
+     .preto{
+        background-color: gray;
+     }
+
+  </style>
+</head>
+
+<body>
+  <div class="quadro">
+    <div id="vermelho" class="vermelho"></div>
+    <div id="branco1" class="branco"></div>
+    <div id="branco2" class="branco"></div>
+    <div id="branco3" class="branco"></div>
+    <div id="branco4" class="branco"></div>
+    <div id="branco5" class="branco"></div>
+    <div id="azul" class="azul"></div>
+    <div id="amarelo" class="amarelo"></div>
+    <div id="preto" class="preto"></div>
+  </div>
+</body>
+
+</html>
