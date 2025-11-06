@@ -1,0 +1,15 @@
+.card {
+   padding: 1rem;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+body{
+    height: 100vw;
+    width: 100vw;
+}
