@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria Automática</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    #principal {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .thumbs img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      margin: 5px;
+      cursor: pointer;
+      opacity: 0.6;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    .thumbs img:hover,
+    .thumbs img.ativo {
+      opacity: 1;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Galeria com Troca automática</h2>
+
+  <img id="principal" src="./assets/img/paisagem1.jpg">
+
+
+  <div class="thumbs">
+    <img src="./assets/img/paisagem1.jpg">
+    <img src="./assets/img/paisagem2.jpg">
+    <img src="./assets/img/paisagem3.jpg">
+    <img src="./assets/img/paisagem4.png">
+  </div>
+
+  <button id="pauseBtn">Pause Auto-Troca</button>
+
+  <script>
+    const principal = document.querySelector("#principal");
+    const thumbs = document.querySelectorAll(".thumbs img");
+    const pauseBtn = document.querySelector("#pauseBtn");
+
+    let indexAtual = 0;
+    let intervalo = null;
+    let rodando = true;
+
+    function trocarImagem(i) {
+      indexAtual = i;
+      principal.src = thumbs[i].src;
+
+      thumbs.forEach(t => t.classList.remove("ativo"));
+      thumbs[i].classList.add("ativo");
+    }
+
+    function iniciarAutoTroca() {
+      intervalo = setInterval(() => {
+        indexAtual = (indexAtual + 1) % thumbs.length;
+        trocarImagem(indexAtual);
+      }, 3000);
+    }
+
+    function pausarAutoTroca() {
+      clearInterval(intervalo);
+    }
+
+    thumbs.forEach((img, i) => {
+      img.addEventListener("click", () => {
+        trocarImagem(i);
+      });
+    });
+
+    pauseBtn.addEventListener("click", () => {
+      if (rodando) {
+        pausarAutoTroca();
+        pauseBtn.textContent = "Retomar Auto-Troca";
+      } else {
+        iniciarAutoTroca();
+        pauseBtn.textContent = "Pause Auto-Troca";
+      }
+      rodando = !rodando;
+    });
+
+    trocarImagem(0);
+    iniciarAutoTroca();
+  </script>
+
+</body>
+</html>

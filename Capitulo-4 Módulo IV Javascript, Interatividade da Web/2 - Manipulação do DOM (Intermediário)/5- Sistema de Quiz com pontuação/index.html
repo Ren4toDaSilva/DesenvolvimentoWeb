@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+      }
+
+      .pergunta {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #resultado {
+        font-size: 20px;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      #reiniciar {
+        margin-top: 20px;
+        padding: 10px 20px;
+        display: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Quiz</h2>
+
+    <div id="quiz"></div>
+
+    <div id="resultado"></div>
+
+    <button id="reiniciar">Reiniciar</button>
+
+    <script>
+      const perguntas = [
+        {
+          enunciado: "1. Qual é a capital da França?",
+          alternativas: ["Londres", "Paris", "Roma"],
+          correta: 1,
+        },
+        {
+          enunciado: "2. Quanto é 5 x 3?",
+          alternativas: ["15", "10", "20"],
+          correta: 0,
+        },
+        {
+          enunciado: "3. Qual é o maior planeta do Sistema Solar?",
+          alternativas: ["Terra", "Júpiter", "Marte"],
+          correta: 1,
+        },
+        {
+          enunciado: "4. Qual linguagem roda no navegador?",
+          alternativas: ["Python", "Java", "JavaScript"],
+          correta: 2,
+        },
+        {
+          enunciado: "5. Qual o resultado de 10 / 2?",
+          alternativas: ["4", "5", "6"],
+          correta: 1,
+        },
+      ];
+
+      let pontuacao = 0;
+      let respondidas = 0;
+
+      const quiz = document.querySelector("#quiz");
+      const resultado = document.querySelector("#resultado");
+      const reiniciarBtn = document.querySelector("#reiniciar");
+
+      function carregarQuiz() {
+        quiz.innerHTML = "";
+        resultado.textContent = "";
+        reiniciarBtn.style.display = "none";
+
+        pontuacao = 0;
+        respondidas = 0;
+
+        perguntas.forEach((p, indexPergunta) => {
+          const div = document.createElement("div");
+          div.className = "pergunta";
+
+          let html = `<p>${p.enunciado}</p>`;
+
+          p.alternativas.forEach((alt, indexAlt) => {
+            html += `
+            <label>
+              <input type="radio" name="p${indexPergunta}" value="${indexAlt}">
+              ${alt}
+            </label><br>
+          `;
+          });
+
+          div.innerHTML = html;
+          quiz.appendChild(div);
+        });
+
+        const inputs = document.querySelectorAll("input[type='radio']");
+        inputs.forEach((input) =>
+          input.addEventListener("change", registrarResposta)
+        );
+      }
+
+      function registrarResposta(e) {
+        const input = e.target;
+        const numPergunta = Number(input.name.replace("p", ""));
+        const alternativaMarcada = Number(input.value);
+
+        const perguntaDOM = document.querySelectorAll(
+          `input[name='p${numPergunta}']`
+        );
+        perguntaDOM.forEach((i) => (i.disabled = true));
+
+        if (alternativaMarcada === perguntas[numPergunta].correta) {
+          pontuacao++;
+        }
+
+        respondidas++;
+
+        if (respondidas === perguntas.length) {
+          mostrarResultado();
+        }
+      }
+
+      function mostrarResultado() {
+        let msg = "";
+
+        if (pontuacao <= 2) msg = "Ruim 😞";
+        else if (pontuacao <= 4) msg = "Bom 🙂";
+        else msg = "Excelente! 🎉";
+
+        resultado.innerHTML = `Você acertou <strong>${pontuacao}</strong> de 5.<br>${msg}`;
+        reiniciarBtn.style.display = "inline-block";
+      }
+
+      reiniciarBtn.addEventListener("click", carregarQuiz);
+
+      carregarQuiz();
+    </script>
+  </body>
+</html>

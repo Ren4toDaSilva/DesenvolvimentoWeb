@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cronômetro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    #tempo {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tempo">0</div>
+
+  <button id="startPauseBtn">Start</button>
+  <button id="resetBtn">Reset</button>
+
+  <script>
+    let tempo = 0;
+    let intervalo = null;
+    let rodando = false;
+
+    const display = document.getElementById("tempo");
+    const startPauseBtn = document.getElementById("startPauseBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function atualizarTempo() {
+      tempo++;
+      display.textContent = tempo;
+    }
+
+    function iniciarPausar() {
+      if (!rodando) {
+        intervalo = setInterval(atualizarTempo, 1000);
+        startPauseBtn.textContent = "Pause";
+        rodando = true;
+      } else {
+        clearInterval(intervalo);
+        startPauseBtn.textContent = "Start";
+        rodando = false;
+      }
+    }
+
+    function resetar() {
+      clearInterval(intervalo);
+      tempo = 0;
+      display.textContent = tempo;
+      startPauseBtn.textContent = "Start";
+      rodando = false;
+    }
+
+    startPauseBtn.addEventListener("click", iniciarPausar);
+    resetBtn.addEventListener("click", resetar);
+
+  </script>
+</body>
+</html>

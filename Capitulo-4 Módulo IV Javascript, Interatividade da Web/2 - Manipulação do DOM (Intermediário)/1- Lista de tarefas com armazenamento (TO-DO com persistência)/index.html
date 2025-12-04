@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do com Persistência</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 40px auto;
+    }
+
+    #lista li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Tarefas</h2>
+
+  <input id="tarefaInput" type="text" placeholder="Digite uma tarefa">
+  <button id="addBtn">Adicionar</button>
+
+  <ul id="lista"></ul>
+
+  <script>
+    const input = document.querySelector("#tarefaInput");
+    const btn = document.querySelector("#addBtn");
+    const ul = document.querySelector("#lista");
+
+    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+    function salvar() {
+      localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    }
+
+    function renderizar() {
+      ul.innerHTML = "";
+
+      tarefas.forEach((t, index) => {
+        const li = document.createElement("li");
+        li.textContent = t;
+
+        const removerBtn = document.createElement("button");
+        removerBtn.textContent = "remover";
+
+        removerBtn.addEventListener("click", () => {
+          tarefas.splice(index, 1);
+          salvar();
+          renderizar();
+        });
+
+        li.appendChild(removerBtn);
+        ul.appendChild(li);
+      });
+    }
+
+    btn.addEventListener("click", () => {
+      const texto = input.value.trim();
+      if (texto === "") return;
+
+      tarefas.push(texto);
+      salvar();
+      renderizar();
+      input.value = "";
+    });
+
+    renderizar();
+
+  </script>
+</body>
+</html>
