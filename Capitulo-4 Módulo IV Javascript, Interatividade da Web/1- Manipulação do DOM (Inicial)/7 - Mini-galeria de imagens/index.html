@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria de Imagens</title>
+
+  <style>
+    .principal {
+      width: 800px;
+      height: 600px;
+      object-fit: cover;
+      border: 2px solid #333;
+      margin-bottom: 15px;
+    }
+
+    .thumbs{
+        gap: 10px;
+    }
+
+    .thumbs img {
+      width: 190px ;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .thumbs img:hover {
+      border-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Galeria de Imagens</h2>
+
+  <!-- IMAGEM PRINCIPAL -->
+  <img id="imgGrande" class="principal" src="./assets/img/paisagem1.jpg" alt="Principal">
+
+  <!-- MINIATURAS -->
+  <div class="thumbs">
+    <img src="./assets/img/paisagem1.jpg" alt="1">
+    <img src="./assets/img/paisagem2.jpg" alt="2">
+    <img src="./assets/img/paisagem3.jpg" alt="3">
+    <img src="./assets/img/paisagem4.png" alt="4">
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

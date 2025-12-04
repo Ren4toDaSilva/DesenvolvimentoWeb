@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Dropdown</title>
+
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #f0f0f0;
+      width: 150px;
+      border: 1px solid #ccc;
+    }
+
+    ul li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    ul li:hover {
+      background: #e0e0e0;
+    }
+
+    /* Ocultar menu */
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Menu Dropdown</h2>
+
+  <button id="btnMenu">Abrir Menu</button>
+
+  <ul id="menu" class="hidden">
+    <li>Opção 1</li>
+    <li>Opção 2</li>
+    <li>Opção 3</li>
+  </ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

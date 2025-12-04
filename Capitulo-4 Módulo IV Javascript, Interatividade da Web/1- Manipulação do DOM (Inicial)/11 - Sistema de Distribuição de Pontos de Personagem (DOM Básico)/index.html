@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Distribuição de Pontos</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 20px;
+    }
+
+    .atributo {
+      margin-bottom: 15px;
+    }
+
+    .atributo span {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+
+    #restantes {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #555;
+      display: none;
+    }
+
+    .erro {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sistema de Distribuição de Pontos</h1>
+
+  <!-- ATRIBUTOS -->
+  <div class="atributo">
+    <span>Força:</span>
+    <button class="menos" data-attr="forca">-</button>
+    <span id="forca">0</span>
+    <button class="mais" data-attr="forca">+</button>
+  </div>
+
+  <div class="atributo">
+    <span>Agilidade:</span>
+    <button class="menos" data-attr="agi">-</button>
+    <span id="agi">0</span>
+    <button class="mais" data-attr="agi">+</button>
+  </div>
+
+  <div class="atributo">
+    <span>Inteligência:</span>
+    <button class="menos" data-attr="int">-</button>
+    <span id="int">0</span>
+    <button class="mais" data-attr="int">+</button>
+  </div>
+
+  <p id="restantes">Pontos restantes: <span id="pts">10</span></p>
+
+  <button id="confirmar">Confirmar Distribuição</button>
+
+  <div id="resultado"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

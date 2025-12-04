@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Mini Quiz</h2>
+
+    <form id="quiz">
+      <p>1. Qual é a capital da França?</p>
+      <label><input type="radio" name="p1" value="0" /> Roma</label><br />
+      <label><input type="radio" name="p1" value="1" /> Paris</label><br />
+      <label><input type="radio" name="p1" value="0" /> Londres</label><br />
+
+      <hr /> 
+
+      <p>2. Quanto é 5 × 3?</p>
+      <label><input type="radio" name="p2" value="0" /> 10</label><br />
+      <label><input type="radio" name="p2" value="1" /> 15</label><br />
+      <label><input type="radio" name="p2" value="0" /> 20</label><br />
+
+      <hr />
+
+      <p>3. Qual planeta é conhecido como Planeta Vermelho?</p>
+      <label><input type="radio" name="p3" value="1" /> Marte</label><br />
+      <label><input type="radio" name="p3" value="0" /> Júpiter</label><br />
+      <label><input type="radio" name="p3" value="0" /> Saturno</label><br />
+
+      <hr />
+
+      <button type="button" id="finalizar">Finalizar</button>
+    </form>
+
+    <h3 id="resultado"></h3>
+
+    <script>
+      const botao = document.getElementById("finalizar");
+      const resultado = document.getElementById("resultado");
+
+      botao.addEventListener("click", () => {
+        let acertos = 0;
+
+        const selecionados = document.querySelectorAll("input:checked");
+
+        selecionados.forEach((item) => {
+          acertos += Number(item.value);
+        });
+
+        resultado.textContent = `Você acertou ${acertos} de 3 perguntas!`;
+      });
+    </script>
+  </body>
+</html>
